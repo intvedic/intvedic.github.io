@@ -7,43 +7,412 @@
   <meta name="description" content="INTVedic — Data Privacy consulting, GDPR compliance, audits and DPO support for businesses." />
   <meta name="author" content="INTVedic" />
 
+  <!-- Fonts (system fallback) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <style>
     :root{
-      --bg:#0f1724;
-      --card:#091023;
+      --bg:#0f1724; /* deep navy */
+      --card:#091023; /* card dark */
       --muted:#94a3b8;
-      --accent:#0b76ef;
+      --accent:#0b76ef; /* brand blue */
       --glass:rgba(255,255,255,0.04);
+      --success:#10b981;
+      --danger:#ef4444;
       --radius:14px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI';color:#e6eefb;background:linear-gradient(180deg,#071127 0%, #071729 60%)}
+    html,body{height:100%;}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0;color:#e6eefb;background:linear-gradient(180deg,#071127 0%, #071729 60%);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 
+    /* Container */
     .container{max-width:1100px;margin:0 auto;padding:20px}
 
-    /* Header */
+    /* Header / Navbar */
     header{position:sticky;top:12px;z-index:40}
-    .nav-wrap{background:rgba(11,118,239,0.06);backdrop-filter:blur(6px);border-radius:16px;padding:12px;border:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center}
+    .nav-wrap{background:linear-gradient(90deg, rgba(11,118,239,0.06), transparent);backdrop-filter:blur(6px);border-radius:16px;padding:12px;border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{display:flex;align-items:center;gap:12px}
-
-    /* Logo */
-    .logo-img{
-      width:52px;height:52px;object-fit:contain;border-radius:12px;
-      background:#fff;padding:4px;
-      box-shadow:0 6px 20px rgba(11,118,239,0.12);
-    }
-
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7dd3fc);display:flex;align-items:center;justify-content:center;color:#05203a;font-weight:800;font-size:20px;box-shadow:0 6px 20px rgba(11,118,239,0.12)}
+    .brand-title{line-height:1}
     .brand-title .name{font-weight:700;font-size:16px}
     .brand-title .tag{font-size:12px;color:var(--muted)}
 
-    nav{display:flex;gap:14px}
-    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;font-weight:600;border-radius:10px}
+    nav{display:flex;align-items:center;gap:14px}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
     nav a:hover{color:white;background:rgba(255,255,255,0.03)}
     .cta{background:linear-gradient(90deg,var(--accent),#7dd3fc);color:#05203a;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none}
 
-    /* Mobile nav */
+    /* Mobile menu */
     .hamburger{display:none}
-    @media (max-width:880px){
-      nav{display:none}
-      .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer}
-      .hamburger
+    @media (max-width:880px){nav{display:none}.hamburger{display:inline-flex;flex-direction:column;gap:5px;cursor:pointer}.hamburger span{width:24px;height:3px;background:#cfe9ff;border-radius:3px;display:block}}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:48px 0}
+    .hero h1{font-size:34px;margin:0 0 12px;line-height:1.02}
+    .hero p.lead{color:var(--muted);margin:0 0 18px;font-size:15px}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .badge{background:var(--glass);padding:8px 10px;border-radius:999px;font-weight:700;font-size:13px;color:var(--muted);display:inline-flex;align-items:center;gap:8px}
+    .hero .card-cta{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(2,6,23,0.45)}
+
+    .stats{display:flex;gap:12px;margin-top:12px}
+    .stat{min-width:98px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);text-align:center}
+    .stat .num{font-size:18px;font-weight:800}
+    .stat .label{color:var(--muted);font-size:12px}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+    .feature{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .feature h4{margin:0 0 8px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Services section */
+    section{padding:56px 0}
+    .section-title{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+    .section-title h2{margin:0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+
+    /* Portfolio */
+    .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .case{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .case img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+
+    /* Testimonials */
+    .testimonials{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .quote{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+
+    /* Footer */
+    footer{padding:28px 0;color:var(--muted)}
+    .footer-grid{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap}
+    .social{display:flex;gap:10px}
+    .pill{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:700}
+
+    /* Contact form */
+    .form-row{display:flex;gap:12px}
+    .form-row .col{flex:1}
+    input,textarea,button{font-family:inherit}
+    input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#e6eefb}
+    button{cursor:pointer;border:0;padding:12px 16px;border-radius:10px;font-weight:700}
+
+    /* small screens */
+    @media (max-width:980px){.hero{grid-template-columns:1fr;}.features{grid-template-columns:repeat(2,1fr)}.testimonials{grid-template-columns:1fr}} 
+    @media (max-width:520px){.features{grid-template-columns:1fr}}
+
+    /* subtle animations */
+    .fade-up{opacity:0;transform:translateY(10px);animation:fadeUp .6s ease forwards}
+    .delay-1{animation-delay:.08s}.delay-2{animation-delay:.12s}.delay-3{animation-delay:.16s}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+
+    /* accessible focus */
+    a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(11,118,239,0.18);outline-offset:2px}
+/* ✅ Logo image styling */
+.logo-img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(11,118,239,0.12);
+  background: #fff; /* in case your logo has transparency */
+  padding: 4px;     /* optional: adds breathing room */
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+  <div class="nav-wrap">
+    <div class="brand">
+      <!-- ✅ Updated logo -->
+      <img src="intvedic_logo.jpg" alt="INTVedic Logo" class="logo-img">
+
+      <div class="brand-title">
+        <div class="name">INTVedic</div>
+        <div class="tag">Protecting Business • Deploying Privacy</div>
+      </div>
+    </div>
+
+    <nav aria-label="Primary navigation">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Case Studies</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="cta">Get in touch</a>
+    </nav>
+
+    <button class="hamburger" aria-expanded="false" aria-controls="mobileMenu" id="hambBtn" title="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+
+      <!-- Mobile menu (hidden) -->
+      <div id="mobileMenu" style="display:none;margin-top:12px;padding:12px;background:rgba(255,255,255,0.02);border-radius:12px">
+        <a href="#home">Home</a> • <a href="#services">Services</a> • <a href="#portfolio">Portfolio</a> • <a href="#contact">Contact</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div>
+          <h1 class="fade-up">INTVedic — Data Privacy & GDPR Compliance for modern businesses</h1>
+          <p class="lead fade-up delay-1">We help organizations become compliant, reduce regulatory risk and build customer trust — full GDPR support, audits, DPO-as-a-service and privacy engineering.</p>
+
+          <div class="badges fade-up delay-2">
+            <div class="badge">GDPR • UK & EU</div>
+            <div class="badge">DPIA & Audits</div>
+            <div class="badge">DPO-as-a-Service</div>
+            <div class="badge">Vendor Assessments</div>
+          </div>
+
+          <div style="margin-top:18px" class="fade-up delay-3">
+            <a href="#contact" class="cta">Request a Consultation</a>
+            <a href="#services" style="margin-left:12px;color:var(--muted);font-weight:700;text-decoration:none;padding:10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.02)">Our Services</a>
+          </div>
+
+          <div class="stats fade-up" style="margin-top:20px">
+            <div class="stat"><div class="num">100+</div><div class="label">Clients supported</div></div>
+            <div class="stat"><div class="num">300+</div><div class="label">Audits & Assessments</div></div>
+            <div class="stat"><div class="num">24/7</div><div class="label">Support</div></div>
+          </div>
+
+          <div class="features" style="margin-top:18px">
+            <div class="feature">
+              <h4>Compliance-first approach</h4>
+              <p>We map your data flows, fix gaps and document controls so you can demonstrate compliance with confidence.</p>
+            </div>
+            <div class="feature">
+              <h4>Practical remediation</h4>
+              <p>Prioritised, cost-aware action plans — not endless checklists. We implement fixes and coach your team.</p>
+            </div>
+            <div class="feature">
+              <h4>Trusted by partners</h4>
+              <p>We partner with legal counsel and engineering teams to deliver technical and legal compliance together.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-right card-cta fade-up">
+          <h3 style="margin:0 0 8px">Quick Intake</h3>
+          <p class="small" style="margin:0 0 12px;color:var(--muted)">Answer 4 quick questions and get a tailored compliance starter plan.</p>
+          <form id="intake" onsubmit="handleIntake(event)">
+            <label class="small">Company / Organisation</label>
+            <input id="org" name="org" placeholder="e.g. Acme Ltd" required aria-label="company" />
+            <label class="small" style="margin-top:8px">Country of operation</label>
+            <input id="country" name="country" placeholder="e.g. India" required />
+            <label class="small" style="margin-top:8px">Primary concern</label>
+            <input id="concern" name="concern" placeholder="GDPR, vendor risk, data breach, etc." required />
+            <button type="submit" style="margin-top:10px;background:linear-gradient(90deg,var(--accent),#7dd3fc);">Get Starter Plan</button>
+            <p id="intakeStatus" style="margin-top:10px;color:var(--muted);display:none"></p>
+          </form>
+        </aside>
+      </section>
+
+      <section id="services" aria-labelledby="services-title">
+        <div class="section-title">
+          <h2 id="services-title">Our Services</h2>
+          <div class="small">End-to-end data privacy services — from strategy to operationalisation.</div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h4>GDPR Readiness & Audits</h4>
+            <p class="small">Full assessments, DPIAs, gap analysis and remediation roadmaps mapped to Article requirements and accountability records.</p>
+          </div>
+          <div class="card">
+            <h4>DPO-as-a-Service</h4>
+            <p class="small">Experienced Data Protection Officers available part-time or retainer-based to lead compliance and be your point of contact.</p>
+          </div>
+          <div class="card">
+            <h4>Vendor & Contract Reviews</h4>
+            <p class="small">We assess third parties, update contracts, and run vendor security questionnaires to reduce supply-chain risk.</p>
+          </div>
+          <div class="card">
+            <h4>Incident Response & Breach Management</h4>
+            <p class="small">Playbooks, stakeholder communications, notifications and technical containment support.</p>
+          </div>
+          <div class="card">
+            <h4>Privacy by Design & Engineering</h4>
+            <p class="small">Architectural reviews, data minimisation, pseudonymisation and secure defaults for product teams.</p>
+          </div>
+          <div class="card">
+            <h4>Training & Policy</h4>
+            <p class="small">Practical training for staff, bespoke privacy policies, and templates for records of processing.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio">
+        <div class="section-title">
+          <h2>Case Studies</h2>
+          <div class="small">Selected work — high impact, measurable outcomes.</div>
+        </div>
+        <div class="portfolio-grid">
+          <div class="case">
+            <img alt="dashboard screenshot" src="https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder"/>
+            <h4>FinTech — GDPR remediation</h4>
+            <p class="small">Completed DPIA, vendor re-negotiations and controls implementation reducing audit findings by 92%.</p>
+          </div>
+          <div class="case">
+            <img alt="team meeting" src="https://images.unsplash.com/photo-1556761175-129418cb2dfe?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder"/>
+            <h4>Health-tech — Data minimisation</h4>
+            <p class="small">Redesigned product flows to minimise sensitive data capture and shortened time-to-compliance by 5 weeks.</p>
+          </div>
+          <div class="case">
+            <img alt="server room" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder"/>
+            <h4>Marketplace — Incident response</h4>
+            <p class="small">Built an incident response plan and ran tabletop exercises to validate readiness.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-title">
+          <h2>About INTVedic</h2>
+          <div class="small">We are a boutique privacy practice — technical, legal and pragmatic.</div>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h4>Our approach</h4>
+            <p class="small">We combine engineering know-how with legal pragmatism to deliver controls you can sustain. Our reports are readable, prioritised and actionable.</p>
+          </div>
+          <div class="card">
+            <h4>Why choose us</h4>
+            <ul class="small" style="margin:0;padding-left:18px">
+              <li>Practical remediation, not paperwork.</li>
+              <li>Fast onboarding & clear deliverables.</li>
+              <li>Affordable packages tuned for startups and SMEs.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+          <div class="pill">ISO-aware</div>
+          <div class="pill">Remote & On-site</div>
+          <div class="pill">Contractual NDAs</div>
+        </div>
+      </section>
+
+      <section id="testimonials">
+        <div class="section-title">
+          <h2>What clients say</h2>
+          <div class="small">Short testimonials from customers (anonymised).</div>
+        </div>
+        <div class="testimonials">
+          <div class="quote">
+            <strong>“INTVedic helped us close our GDPR gaps quickly. Their remediation plan was realistic and targeted.”</strong>
+            <div class="small" style="margin-top:8px">— Head of Security, FinTech</div>
+          </div>
+          <div class="quote">
+            <strong>“Excellent DPO support and sensible vendor assessments. Reduced our third-party risk substantially.”</strong>
+            <div class="small" style="margin-top:8px">— COO, HealthTech</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-title">
+          <h2>Contact Us</h2>
+          <div class="small">Request a quote, book a consultation, or send a general enquiry.</div>
+        </div>
+
+        <div class="card">
+          <form id="contactForm" onsubmit="handleContact(event)">
+            <div class="form-row">
+              <div class="col">
+                <label class="small" for="name">Name</label>
+                <input id="name" name="name" required placeholder="Your name" />
+              </div>
+              <div class="col">
+                <label class="small" for="email">Email</label>
+                <input id="email" name="email" type="email" required placeholder="you@company.com" />
+              </div>
+            </div>
+            <div style="margin-top:12px">
+              <label class="small" for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us about your project" required></textarea>
+            </div>
+
+            <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
+              <button type="submit" style="background:linear-gradient(90deg,var(--accent),#7dd3fc);">Send message</button>
+              <a class="pill" href="mailto:hello@intvedic.co.in?subject=Contact%20from%20Website">Email us directly</a>
+              <div id="contactStatus" class="small" style="color:var(--muted);display:none"></div>
+            </div>
+
+            <div style="margin-top:10px;font-size:13px;color:var(--muted)">We respect your privacy — messages are only used to respond. For details see our <a href="#privacy" style="color:var(--muted);text-decoration:underline">Privacy Notice</a>.</div>
+          </form>
+        </div>
+      </section>
+
+      <section id="privacy">
+        <div class="section-title"><h2>Privacy Notice (brief)</h2>
+          <div class="small">We process contact information only to respond to enquiries. We can provide full privacy documentation on request.</div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <strong>INTVedic</strong>
+          <div class="small">© " + (new Date().getFullYear()) + " INTVedic — All rights reserved</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+          <div class="small">Contact: <a href="mailto:hello@intvedic.co.in" style="color:var(--muted);text-decoration:underline">hello@intvedic.co.in</a></div>
+          <div class="social small">Follow: <a href="#" style="color:var(--muted);text-decoration:underline;margin-left:8px">LinkedIn</a></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const hamb = document.getElementById('hambBtn');
+    const mobile = document.getElementById('mobileMenu');
+    hamb?.addEventListener('click', ()=>{
+      const expanded = hamb.getAttribute('aria-expanded') === 'true';
+      hamb.setAttribute('aria-expanded', String(!expanded));
+      mobile.style.display = expanded ? 'none' : 'block';
+    });
+
+    // Intake mock handler
+    function handleIntake(e){
+      e.preventDefault();
+      const status = document.getElementById('intakeStatus');
+      status.style.display='block';
+      status.textContent='Thanks! We\'ll email a starter plan within 24 hours.';
+      setTimeout(()=>{status.style.display='none';},4000);
+      e.target.reset();
+    }
+
+    // Contact mock handler (no backend) — gracefully degrade to mailto
+    function handleContact(e){
+      e.preventDefault();
+      const status = document.getElementById('contactStatus');
+      status.style.display='block';
+      status.textContent='Message queued (demo). You will be redirected to your email client.';
+
+      const name = encodeURIComponent(document.getElementById('name').value);
+      const email = encodeURIComponent(document.getElementById('email').value);
+      const msg = encodeURIComponent(document.getElementById('message').value + "\n\nFrom: " + name + " (" + email + ")");
+
+      // Open user's mail client as fallback for GitHub Pages
+      window.location = `mailto:hello@intvedic.co.in?subject=${encodeURIComponent('Website enquiry from ' + name)}&body=${msg}`;
+      e.target.reset();
+    }
+
+    // Small accessibility: smooth scrolling for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (ev)=>{
+        const href = a.getAttribute('href');
+        if(href.length>1){
+          ev.preventDefault();
+          document.querySelector(href)?.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
+
+    // Reveal animations on load
+    window.addEventListener('load', ()=>document.querySelectorAll('.fade-up').forEach((el,i)=>el.style.animationDelay=(i*80)+'ms'));
+  </script>
+</body>
+</html>
