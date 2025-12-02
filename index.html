@@ -333,7 +333,7 @@
 
             <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
               <button type="submit" style="background:linear-gradient(90deg,var(--accent),#7dd3fc);">Send message</button>
-              <a class="pill" href="mailto:hello@intvedic.co.in?subject=Contact%20from%20Website">Email us directly</a>
+              <a class="pill" href="mailto:intvedic@outlook.com?subject=Contact%20from%20Website">Email us directly</a>
               <div id="contactStatus" class="small" style="color:var(--muted);display:none"></div>
             </div>
 
@@ -354,10 +354,10 @@
       <div class="footer-grid">
         <div>
           <strong>INTVedic</strong>
-          <div class="small">© " + (new Date().getFullYear()) + " INTVedic — All rights reserved</div>
+          <div class="small">© INTVedic — All rights reserved</div>
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
-          <div class="small">Contact: <a href="mailto:hello@intvedic.co.in" style="color:var(--muted);text-decoration:underline">hello@intvedic.co.in</a></div>
+          <div class="small">Contact: <a href="mailto:intvedic@outlook.com" style="color:var(--muted);text-decoration:underline">intvedic@outlook.com</a></div>
           <div class="social small">Follow: <a href="#" style="color:var(--muted);text-decoration:underline;margin-left:8px">LinkedIn</a></div>
         </div>
       </div>
@@ -396,7 +396,7 @@
       const msg = encodeURIComponent(document.getElementById('message').value + "\n\nFrom: " + name + " (" + email + ")");
 
       // Open user's mail client as fallback for GitHub Pages
-      window.location = `mailto:hello@intvedic.co.in?subject=${encodeURIComponent('Website enquiry from ' + name)}&body=${msg}`;
+      window.location = `mailto:intvedic@outlook.com?subject=${encodeURIComponent('Website enquiry from ' + name)}&body=${msg}`;
       e.target.reset();
     }
 
@@ -416,3 +416,4 @@
   </script>
 </body>
 </html>
+
