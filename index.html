@@ -1,5 +1,4 @@
-<!-- Final HTML with embedded Privacy Policy link and section -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -7,80 +6,209 @@
   <title>INTVedic — Data Privacy & GDPR Support</title>
   <meta name="description" content="INTVedic — Data Privacy consulting, GDPR compliance, audits and DPO support for businesses." />
   <meta name="author" content="INTVedic" />
-  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Fonts (system fallback) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#091023;
+      --muted:#94a3b8;
+      --accent:#0b76ef;
+      --glass:rgba(255,255,255,0.04);
+      --success:#10b981;
+      --danger:#ef4444;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      margin:0;color:#e6eefb;
+      background:linear-gradient(180deg,#071127 0%, #071729 60%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale
+    }
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+
+    header{position:sticky;top:12px;z-index:40}
+    .nav-wrap{
+      background:linear-gradient(90deg, rgba(11,118,239,0.06), transparent);
+      backdrop-filter:blur(6px);
+      border-radius:16px;padding:12px;
+      border:1px solid rgba(255,255,255,0.04);
+      display:flex;align-items:center;justify-content:space-between;gap:12px
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-title .name{font-weight:700;font-size:16px}
+    .brand-title .tag{font-size:12px;color:var(--muted)}
+
+    .logo-img{
+      width:52px;height:52px;
+      object-fit:contain;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(11,118,239,0.12);
+      background:#fff;
+      padding:4px;
+    }
+
+    nav{display:flex;align-items:center;gap:14px}
+    nav a{
+      color:var(--muted);text-decoration:none;
+      padding:8px 12px;border-radius:10px;font-weight:600
+    }
+    nav a:hover{color:white;background:rgba(255,255,255,0.03)}
+    .cta{
+      background:linear-gradient(90deg,var(--accent),#7dd3fc);
+      color:#05203a;padding:10px 14px;
+      border-radius:10px;font-weight:700;
+      text-decoration:none
+    }
+
+    .hamburger{display:none}
+    @media (max-width:880px){
+      nav{display:none}
+      .hamburger{display:inline-flex;flex-direction:column;gap:5px;cursor:pointer}
+      .hamburger span{width:24px;height:3px;background:#cfe9ff;border-radius:3px;display:block}
+    }
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:48px 0}
+    .hero h1{font-size:34px;margin:0 0 12px;line-height:1.02}
+    .hero p.lead{color:var(--muted);margin:0 0 18px;font-size:15px}
+
+    .badge{background:var(--glass);padding:8px 10px;border-radius:999px;font-weight:700;font-size:13px;color:var(--muted);display:inline-flex;align-items:center;gap:8px}
+    .card-cta{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;padding:18px;
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow:0 8px 30px rgba(2,6,23,0.45)
+    }
+
+    .stats{display:flex;gap:12px;margin-top:12px}
+    .stat{min-width:98px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);text-align:center}
+    .stat .num{font-size:18px;font-weight:800}
+    .stat .label{color:var(--muted);font-size:12px}
+
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+    .feature{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .feature h4{margin:0 0 8px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+
+    section{padding:56px 0}
+    .section-title{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+
+    .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .case{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:14px;border-radius:12px;
+      border:1px solid rgba(255,255,255,0.03)
+    }
+    .case img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+
+    .testimonials{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .quote{
+      padding:16px;border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03)
+    }
+
+    footer{padding:28px 0;color:var(--muted)}
+    .footer-grid{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+
+    input,textarea,button{font-family:inherit}
+    input,textarea{
+      width:100%;padding:12px;border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:transparent;color:#e6eefb
+    }
+    button{cursor:pointer;border:0;padding:12px 16px;border-radius:10px;font-weight:700}
+
+  </style>
 </head>
+
 <body>
+  <div class="container">
+    <header>
+      <div class="nav-wrap">
+        <div class="brand">
+          <img src="intvedic_logo.jpg" alt="INTVedic Logo" class="logo-img">
+          <div class="brand-title">
+            <div class="name">INTVedic</div>
+            <div class="tag">Protecting Business • Deploying Privacy</div>
+          </div>
+        </div>
 
-<header>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-    <a href="#privacy-policy">Privacy Policy</a>
-  </nav>
-</header>
+        <nav aria-label="Primary navigation">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#portfolio">Case Studies</a>
+          <a href="#about">About</a>
+          <a href="#contact" class="cta">Get in touch</a>
+        </nav>
 
-<section id="home">
-  <h1>Welcome to INTVedic</h1>
-  <p>Protecting Business, Deploying Privacy</p>
-</section>
+        <button class="hamburger" aria-expanded="false" aria-controls="mobileMenu" id="hambBtn">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
 
-<section id="services">
-  <h2>Our Services</h2>
-  <ul>
-    <li>GDPR Consulting</li>
-    <li>Data Protection Impact Assessments</li>
-    <li>Privacy Audits</li>
-    <li>DPO as a Service</li>
-  </ul>
-</section>
+      <div id="mobileMenu" style="display:none;margin-top:12px;padding:12px;background:rgba(255,255,255,0.02);border-radius:12px">
+        <a href="#home">Home</a> • 
+        <a href="#services">Services</a> • 
+        <a href="#portfolio">Portfolio</a> • 
+        <a href="#contact">Contact</a>
+      </div>
+    </header>
 
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>Email: <a href="mailto:intvedic@rategain.com">intvedic@rategain.com</a></p>
-</section>
+    <main>
 
-<!-- PRIVACY POLICY SECTION -->
-<section id="privacy-policy" style="padding:40px 0;">
-  <h2>Privacy Policy</h2>
-  <p>Last updated: December 2025</p>
+      <!-- HERO -->
+      <section id="home" class="hero">
+        <div>
+          <h1>INTVedic — Data Privacy & GDPR Compliance for modern businesses</h1>
+          <p class="lead">We help organizations become compliant, reduce regulatory risk and build customer trust.</p>
 
-  <h3>1. Introduction</h3>
-  <p>INTVedic ("we", "our", "us") is committed to protecting your personal data and ensuring transparency about how we handle information collected through our website and services.</p>
+          <div class="badges">
+            <div class="badge">GDPR • UK & EU</div>
+            <div class="badge">DPIA & Audits</div>
+            <div class="badge">DPO-as-a-Service</div>
+            <div class="badge">Vendor Assessments</div>
+          </div>
 
-  <h3>2. Information We Collect</h3>
-  <ul>
-    <li>Information you provide voluntarily (e.g., contact forms, email inquiries)</li>
-    <li>Analytical and usage data (page visits, browser type, time spent)</li>
-    <li>Technical data such as IP address and device information</li>
-  </ul>
+          <div style="margin-top:18px">
+            <a href="#contact" class="cta">Request a Consultation</a>
+          </div>
 
-  <h3>3. How We Use Your Information</h3>
-  <ul>
-    <li>To provide and improve our services</li>
-    <li>To respond to your inquiries</li>
-    <li>To maintain security and prevent misuse</li>
-  </ul>
+          <div class="stats" style="margin-top:20px">
+            <div class="stat"><div class="num">100+</div><div class="label">Clients supported</div></div>
+            <div class="stat"><div class="num">300+</div><div class="label">Audits & Assessments</div></div>
+            <div class="stat"><div class="num">24/7</div><div class="label">Support</div></div>
+          </div>
+        </div>
 
-  <h3>4. Data Sharing</h3>
-  <p>We do not sell your data. We may share data only with trusted partners as required to deliver services or comply with legal obligations.</p>
+        <aside class="hero-right card-cta">
+          <h3>Quick Intake</h3>
+          <p class="small" style="color:var(--muted)">Answer 4 quick questions and get a starter plan.</p>
 
-  <h3>5. Your Rights</h3>
-  <p>You have the right to access, correct, delete, or restrict processing of your personal data. You can contact us at <a href="mailto:intvedic@rategain.com">intvedic@rategain.com</a>.</p>
+          <form id="intake" onsubmit="handleIntake(event)">
+            <label>Company</label>
+            <input id="org" required />
+            <label style="margin-top:8px">Country</label>
+            <input id="country" required />
+            <label style="margin-top:8px">Primary concern</label>
+            <input id="concern" required />
+            <button type="submit" style="margin-top:10px;background:linear-gradient(90deg,var(--accent),#7dd3fc);">Get Starter Plan</button>
+            <p id="intakeStatus" style="margin-top:10px;color:var(--muted);display:none"></p>
+          </form>
+        </aside>
+      </section>
 
-  <h3>6. Data Retention</h3>
-  <p>We retain personal data only as long as necessary to fulfill the purposes outlined in this policy.</p>
+      <!-- SERVICES -->
+      <section id="services">
+        <div class="section-title">
+          <h2>Our Services</h2>
+        </div>
 
-  <h3>7. Cookies</h3>
-  <p>We may use cookies to enhance user experience and analyze website traffic.</p>
-
-  <h3>8. Contact Us</h3>
-  <p>For privacy-related queries: <a href="mailto:intvedic@rategain.com">intvedic@rategain.com</a></p>
-</section>
-
-<footer>
-  <p>© 2025 INTVedic | <a href="#privacy-policy">Privacy Policy</a></p>
-</footer>
-
-</body>
-</html>
+        <div class="grid">
+          <div class="card">
+            <h4>GDPR Readiness & Audits</h4>
+            <p class="small">Assessments, DPIAs, gap analysis.</p>
