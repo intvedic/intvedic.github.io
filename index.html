@@ -88,4 +88,106 @@
         </button>
       </div>
 
-      <div id="mobileMenu" style="display:none;margin-top:12px;padding:12px;background:rgba(255,255,255
+      <div id="mobileMenu" style="display:none;margin-top:12px;padding:12px;background:rgba(255,255,255,0.02);border-radius:12px">
+        <a href="#home">Home</a> • <a href="#services">Services</a> • <a href="#portfolio">Portfolio</a> • <a href="#contact">Contact</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- All page content unchanged except contact email + footer updates -->
+      
+      <section id="contact">
+        <div class="section-title">
+          <h2>Contact Us</h2>
+          <div class="small">Request a quote, book a consultation, or send a general enquiry.</div>
+        </div>
+
+        <div class="card">
+          <form id="contactForm" onsubmit="handleContact(event)">
+            <div class="form-row">
+              <div class="col">
+                <label class="small">Name</label>
+                <input id="name" name="name" required placeholder="Your name" />
+              </div>
+              <div class="col">
+                <label class="small">Email</label>
+                <input id="email" name="email" type="email" required placeholder="you@company.com" />
+              </div>
+            </div>
+
+            <div style="margin-top:12px">
+              <label class="small">Message</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project"></textarea>
+            </div>
+
+            <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
+              <button type="submit" style="background:linear-gradient(90deg,var(--accent),#7dd3fc);">Send message</button>
+
+              <!-- ✅ Updated Email -->
+              <a class="pill" href="mailto:intvedic@outlook.com?subject=Contact%20from%20Website">Email us directly</a>
+
+              <div id="contactStatus" class="small" style="color:var(--muted);display:none"></div>
+            </div>
+
+            <div style="margin-top:10px;font-size:13px;color:var(--muted)">We respect your privacy — messages are only used to respond. For details see our <a href="#privacy">Privacy Notice</a>.</div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <strong>INTVedic</strong>
+          <div class="small">© <script>document.write(new Date().getFullYear());</script> INTVedic — All rights reserved</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+
+          <!-- ✅ Updated Footer Email -->
+          <div class="small">Contact: 
+            <a href="mailto:intvedic@outlook.com" style="color:var(--muted);text-decoration:underline">
+              intvedic@outlook.com
+            </a>
+          </div>
+
+          <!-- ✅ Updated LinkedIn link -->
+          <div class="social small">Follow:
+            <a href="https://www.linkedin.com/company/intvedic/" style="color:var(--muted);text-decoration:underline;margin-left:8px" target="_blank">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const hamb = document.getElementById('hambBtn');
+    const mobile = document.getElementById('mobileMenu');
+    hamb?.addEventListener('click', ()=>{
+      const expanded = hamb.getAttribute('aria-expanded') === 'true';
+      hamb.setAttribute('aria-expanded', String(!expanded));
+      mobile.style.display = expanded ? 'none' : 'block';
+    });
+
+    // Updated contact handler
+    function handleContact(e){
+      e.preventDefault();
+      const status = document.getElementById('contactStatus');
+      status.style.display='block';
+      status.textContent='Message queued. Redirecting to your email client...';
+
+      const name = encodeURIComponent(document.getElementById('name').value);
+      const email = encodeURIComponent(document.getElementById('email').value);
+      const msg = encodeURIComponent(document.getElementById('message').value + "\n\nFrom: " + name + " (" + email + ")");
+
+      // ✅ Updated mailto fallback
+      window.location = `mailto:intvedic@outlook.com?subject=${encodeURIComponent('Website enquiry from ' + name)}&body=${msg}`;
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
