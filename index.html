@@ -314,32 +314,23 @@
           <div class="small">Request a quote, book a consultation, or send a general enquiry.</div>
         </div>
 
-        <div class="card">
-          <form id="contactForm" onsubmit="handleContact(event)">
-            <div class="form-row">
-              <div class="col">
-                <label class="small" for="name">Name</label>
-                <input id="name" name="name" required placeholder="Your name" />
-              </div>
-              <div class="col">
-                <label class="small" for="email">Email</label>
-                <input id="email" name="email" type="email" required placeholder="you@company.com" />
-              </div>
-            </div>
-            <div style="margin-top:12px">
-              <label class="small" for="message">Message</label>
-              <textarea id="message" name="message" rows="5" placeholder="Tell us about your project" required></textarea>
-            </div>
+<div class="card">
 
-            <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
-              <button type="submit" style="background:linear-gradient(90deg,var(--accent),#7dd3fc);">Send message</button>
-              <a class="pill"
-   href="mailto:intvedic@outlook.com?subject=Consultation%20Request%20from%20Website&body=Hello%20INTVedic%20Team,%0A%0AI%20would%20like%20to%20discuss%20the%20following:%0A%0A"
->
-   Email us directly
-</a>
-              <div id="contactStatus" class="small" style="color:var(--muted);display:none"></div>
-            </div>
+  <h3>Contact INTVedic</h3>
+  <p class="small" style="color:var(--muted);margin-top:8px">
+    For consultations, audits, GDPR or DPDPA compliance support,
+    please email us directly.
+  </p>
+
+  <div style="margin-top:18px">
+    <a class="pill"
+       href="mailto:intvedic@outlook.com?subject=Consultation%20Request%20from%20Website&body=Hello%20INTVedic%20Team,%0A%0AI%20would%20like%20to%20discuss%20the%20following:%0A%0A"
+       style="background:linear-gradient(90deg,var(--accent),#7dd3fc);color:#05203a;text-decoration:none;font-weight:700;">
+       Email us directly
+    </a>
+  </div>
+
+</div>
 
             <div style="margin-top:10px;font-size:13px;color:var(--muted)">We respect your privacy — messages are only used to respond. For details see our <a href="#privacy" style="color:var(--muted);text-decoration:underline">Privacy Notice</a>.</div>
           </form>
