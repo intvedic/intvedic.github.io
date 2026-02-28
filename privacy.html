@@ -12,49 +12,156 @@ margin:0;
 padding:40px;
 background:#071127;
 color:#e6eefb;
-line-height:1.6;
+line-height:1.7;
 }
-h1{margin-top:0}
+h1,h2,h3{margin-top:28px}
 a{color:#0b76ef;text-decoration:none}
-.container{max-width:800px;margin:auto}
+.container{max-width:900px;margin:auto}
+.language-box{
+text-align:right;
+margin-bottom:20px;
+}
+.notice-box{
+background:#0d1b3d;
+padding:20px;
+border-radius:8px;
+margin-top:20px;
+}
 </style>
 </head>
 
 <body>
+
 <div class="container">
+
+<!-- Language Translate Option -->
+<div class="language-box">
+<div id="google_translate_element"></div>
+</div>
 
 <h1>Privacy Notice</h1>
 
 <p>
-INTVedic is committed to transparency and data protection.
+INTVedic is committed to protecting personal data in accordance with:
 </p>
 
-<h3>1. No Tracking</h3>
+<div class="notice-box">
+<ul>
+<li>General Data Protection Regulation (EU) 2016/679 (GDPR)</li>
+<li>Digital Personal Data Protection Act, 2023 (India) (DPDPA)</li>
+</ul>
+</div>
+
+<h2>1. Data Controller</h2>
 <p>
-This website does not use cookies, analytics tools, tracking pixels, or external scripts.
+INTVedic acts as the Data Controller for any limited personal data voluntarily shared with us.
 </p>
 
-<h3>2. No Data Collection</h3>
+<h2>2. Scope of This Website</h2>
 <p>
-We do not collect, store, or process personal data through this website.
+This website does not use cookies, behavioral tracking tools, analytics platforms, profiling systems, or advertising technologies.
 </p>
 
-<h3>3. Direct Contact</h3>
+<h2>3. Categories of Personal Data</h2>
 <p>
-If you contact us via email, your information will only be used to respond to your enquiry.
+We do not automatically collect personal data. Personal data may only be processed if you voluntarily send an email to us. This may include:
 </p>
+<ul>
+<li>Name</li>
+<li>Email address</li>
+<li>Organization details (if provided)</li>
+<li>Content of your inquiry</li>
+</ul>
 
-<h3>4. Contact</h3>
+<h2>4. Lawful Basis of Processing</h2>
 <p>
-For privacy-related queries, contact:
-<a href="mailto:intvedic@outlook.com">intvedic@outlook.com</a>
+Under GDPR Article 6(1)(f) and DPDPA 2023, processing is based on:
+</p>
+<ul>
+<li>Legitimate interest – responding to professional inquiries</li>
+<li>Voluntary provision of data by the Data Principal</li>
+</ul>
+
+<h2>5. Purpose of Processing</h2>
+<p>
+Personal data is used strictly for:
+</p>
+<ul>
+<li>Responding to inquiries</li>
+<li>Providing requested services or information</li>
+</ul>
+
+<h2>6. Data Retention</h2>
+<p>
+Email communications are retained only for as long as necessary to fulfill the purpose of correspondence or comply with legal obligations.
 </p>
 
-<br>
+<h2>7. Cross-Border Data Transfers</h2>
+<p>
+If communication occurs internationally, data may be processed in India or other jurisdictions depending on email hosting infrastructure.
+</p>
+
+<h2>8. Data Principal / Data Subject Rights</h2>
+
+<h3>Under GDPR</h3>
+<ul>
+<li>Right of access</li>
+<li>Right to rectification</li>
+<li>Right to erasure</li>
+<li>Right to restriction of processing</li>
+<li>Right to lodge complaint with supervisory authority</li>
+</ul>
+
+<h3>Under DPDPA 2023</h3>
+<ul>
+<li>Right to access information</li>
+<li>Right to correction and erasure</li>
+<li>Right to grievance redressal</li>
+<li>Right to nominate</li>
+</ul>
+
+<h2>9. Security Measures</h2>
+<p>
+Reasonable technical and organizational measures are implemented to safeguard communications.
+</p>
+
+<h2>10. No Automated Decision-Making</h2>
+<p>
+INTVedic does not engage in profiling, automated decision-making, or algorithmic analysis.
+</p>
+
+<h2>11. Contact</h2>
+<p>
+For privacy-related requests, contact:
+<br><br>
+<a href="mailto:intvedic@outlook.com?subject=Privacy%20Request">
+intvedic@outlook.com
+</a>
+</p>
+
+<hr style="margin-top:40px;border:1px solid #1b2a5c">
+
+<p style="font-size:13px;color:#9db2ff">
+This notice is designed to meet baseline transparency requirements under GDPR and DPDPA 2023 as applicable.
+</p>
+
 <p>
 © 2026 INTVedic. All Rights Reserved.
 </p>
 
 </div>
+
+<!-- Google Translate Script -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+new google.translate.TranslateElement({
+pageLanguage: 'en',
+layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+}, 'google_translate_element');
+}
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
